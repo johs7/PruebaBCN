@@ -19,6 +19,5 @@ namespace PruebaBCN
         public Nullable<int> Month { get; set; }
         public Nullable<int> Day { get; set; }
         public Nullable<double> ExchangeRateValue { get; set; }
-        public string XmlData { get; set; }
     }
 }

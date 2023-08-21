@@ -12,9 +12,9 @@ using System.Xml.Linq;
 
 namespace PruebaBCN
 {
-    public partial class Form1 : Form
+    public partial class FormMain : Form
     {
-        public Form1()
+        public FormMain()
         {
             InitializeComponent();
         }
@@ -153,6 +153,11 @@ namespace PruebaBCN
             {
                 MessageBox.Show($"Error al obtener el tipo de cambio del día: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            lblTipoCambioDia.Text = "";
         }
     }
 }
