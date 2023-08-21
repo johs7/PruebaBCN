@@ -39,14 +39,6 @@ namespace PruebaBCN
             }
         }
 
-        public void Guardar()
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Guardar(object exchangeRates)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

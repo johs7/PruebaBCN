@@ -37,6 +37,7 @@ namespace PruebaBCN
                 return xDoc;
             }
         }
+      
         public async Task<double> GetExchangeRateForDayAsync(int year, int month, int day)
         {
             string serviceUrl = "https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx";

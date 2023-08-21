@@ -87,19 +87,6 @@ namespace VerificacionTipoCambio
         // Resto del código (funciones ExchangeRatesExist, EnviarCorreo, etc.)
     
 
-static bool ExchangeRatesExist(XDocument exchangeRatesXml)
-        {
-            XNamespace ns = "http://servicios.bcn.gob.ni/";
-            XElement resultElement = exchangeRatesXml.Descendants(ns + "RecuperaTC_MesResult").FirstOrDefault();
-            return resultElement != null && resultElement.Descendants(ns + "Detalle_TC").Any();
-        }
-
-        static bool ExchangeRatesExist(XElement resultElement)
-        {
-            XNamespace ns = "http://servicios.bcn.gob.ni/";
-            return resultElement != null && resultElement.Descendants(ns + "Detalle_TC").Any();
-        }
-
         static void EnviarCorreoNotificacion(string exchangeRatesXml)
         {
             string toEmail = "Roquejohanssen@gmail.com";
@@ -137,7 +124,7 @@ static bool ExchangeRatesExist(XDocument exchangeRatesXml)
                 smtp.Send(mail);
                 resultado = true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 resultado = false;
             }

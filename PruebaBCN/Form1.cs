@@ -21,6 +21,8 @@ namespace PruebaBCN
         private TipoCambio tipoCambio = new TipoCambio();
         private BancoCentralService bcn= new BancoCentralService();
          
+    
+
         private async void btnCambioMensual_Click_1(object sender, EventArgs e)
         {
             int year = DateTime.Now.Year;
@@ -28,7 +30,6 @@ namespace PruebaBCN
 
             try
             {
-
                 XDocument exchangeRatesDocument = await bcn.GetExchangeRatesForMonthAsync(year, month);
 
                 dgvCambio.Rows.Clear(); // Limpia el DataGridView antes de agregar nuevos datos
@@ -37,8 +38,8 @@ namespace PruebaBCN
                 XNamespace responseNs = "http://servicios.bcn.gob.ni/";
 
                 var responseElement = exchangeRatesDocument.Descendants(soapNs + "Body")
-                                                          .Descendants(responseNs + "RecuperaTC_MesResponse")
-                                                          .FirstOrDefault();
+                    .Descendants(responseNs + "RecuperaTC_MesResponse")
+                    .FirstOrDefault();
 
                 if (responseElement != null)
                 {
@@ -54,6 +55,24 @@ namespace PruebaBCN
                         double exchangeRate = double.Parse(tcElement.Element(detalleNs + "Valor").Value);
 
                         dgvCambio.Rows.Add(year, month, day, exchangeRate);
+
+                        // Crear una instancia de ExchangeRates con los datos y guardar en la base de datos
+                        ExchangeRates exchangeRateObj = new ExchangeRates
+                        {
+                            Year = year,
+                            Month = month,
+                            Day = day,
+                            ExchangeRateValue = exchangeRate
+                        };
+
+                        if (tipoCambio.Guardar(exchangeRateObj))
+                        {
+                            Console.WriteLine("Datos guardados en la base de datos correctamente.");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error al guardar los datos en la base de datos.");
+                        }
                     }
                 }
             }
@@ -62,6 +81,7 @@ namespace PruebaBCN
                 MessageBox.Show($"Error al obtener el detalle de tipos de cambio: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnAgregarTcSistema_Click(object sender, EventArgs e)
         {
