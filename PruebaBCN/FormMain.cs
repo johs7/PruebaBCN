@@ -90,50 +90,6 @@ namespace PruebaBCN
         }
 
 
-        /*private void btnAgregarTcSistema_Click(object sender, EventArgs e)
-        {
-            int year = DateTime.Now.Year;
-            int month = DateTime.Now.Month;
-            int day = DateTime.Now.Day;
-
-            if (tipoCambio.ExistenRegistros(year, month,day))
-            {
-                MessageBox.Show("Los registros para este mes ya existen en la base de datos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            
-          
-            double exchangeRate;
-
-            try
-            {
-                exchangeRate = bcn.GetExchangeRateForDayAsync(year, month, day).Result; // Espera a obtener el tipo de cambio del día
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al obtener el tipo de cambio del día: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            // Crear objeto ExchangeRate y agregarlo a la base de datos
-            ExchangeRates exchangeRateObj = new ExchangeRates
-            {
-                Year = year,
-                Month = month,
-                Day = day,
-                ExchangeRateValue = exchangeRate
-            };
-
-            if (tipoCambio.Guardar(exchangeRateObj))
-            {
-                MessageBox.Show("Tipo de cambio del día agregado correctamente a la base de datos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("Error al agregar el tipo de cambio del día a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }}*/
-
         //este evento asigna el boton el cual nos dara el resultado en label del tipo de cambio del dia actual
         private async void btnCambioDia_Click(object sender, EventArgs e)
         {
