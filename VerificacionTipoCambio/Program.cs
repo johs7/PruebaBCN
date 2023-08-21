@@ -74,7 +74,7 @@ namespace VerificacionTipoCambio
                 }
 
                 // Envía un correo electrónico de notificación
-                EnviarCorreoNotificacion($"Se han encontrado registros para el próximo mes (Año: {year}, Mes: {month}).");
+                EnviarCorreoNotificacion($" (Año: {year}, Mes: {month}).");
 
             }
             catch (Exception ex)
