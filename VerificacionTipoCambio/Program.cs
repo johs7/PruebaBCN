@@ -87,7 +87,7 @@ namespace VerificacionTipoCambio
 
         static void EnviarCorreoNotificacion(string exchangeRatesXml)
         {
-            string toEmail = "Roquejohanssen@gmail.com";
+            string toEmail = "info@casavision.com";
             string subject = "Notificación de Existencia de Datos";
             string body = "Se han encontrado registros para el próximo mes, se ha realizado el registro en la base de datos\n\n" + exchangeRatesXml;
 
