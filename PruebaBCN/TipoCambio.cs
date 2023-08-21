@@ -24,12 +24,12 @@ namespace PruebaBCN
                 return false;
             }
         }
-        public bool ExistenRegistros(int year, int month)
+        public bool ExistenRegistros(int year, int month,int day)
         {
             try
             {
                 // Verificar si existen registros para el año y mes dados
-                return db.ExchangeRates.Any(r => r.Year == year && r.Month == month);
+                return db.ExchangeRates.Any(r => r.Year == year && r.Month == month && r.Day==day);
             }
             catch (Exception ex)
             {

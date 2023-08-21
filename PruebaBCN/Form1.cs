@@ -48,30 +48,37 @@ namespace PruebaBCN
 
                     XNamespace detalleNs = detalleTCElement.GetDefaultNamespace();
 
+                    // Lista para almacenar los días ya registrados
+                    List<int> diasRegistrados = new List<int>();
+
                     foreach (var tcElement in detalleTCElement.Elements(detalleNs + "Tc"))
                     {
-                        string fecha = tcElement.Element(detalleNs + "Fecha").Value;
                         int day = int.Parse(tcElement.Element(detalleNs + "Dia").Value);
                         double exchangeRate = double.Parse(tcElement.Element(detalleNs + "Valor").Value);
 
                         dgvCambio.Rows.Add(year, month, day, exchangeRate);
 
-                        // Crear una instancia de ExchangeRates con los datos y guardar en la base de datos
-                        ExchangeRates exchangeRateObj = new ExchangeRates
+                        // Verificar si ya se registró el día y evitar registros duplicados
+                        if (!diasRegistrados.Contains(day) && !tipoCambio.ExistenRegistros(year, month, day))
                         {
-                            Year = year,
-                            Month = month,
-                            Day = day,
-                            ExchangeRateValue = exchangeRate
-                        };
+                            // Crear una instancia de ExchangeRates con los datos y guardar en la base de datos
+                            ExchangeRates exchangeRateObj = new ExchangeRates
+                            {
+                                Year = year,
+                                Month = month,
+                                Day = day,
+                                ExchangeRateValue = exchangeRate
+                            };
 
-                        if (tipoCambio.Guardar(exchangeRateObj))
-                        {
-                            Console.WriteLine("Datos guardados en la base de datos correctamente.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Error al guardar los datos en la base de datos.");
+                            if (tipoCambio.Guardar(exchangeRateObj))
+                            {
+                                Console.WriteLine("Registrado");
+                                diasRegistrados.Add(day); // Agregar el día a la lista de días registrados
+                            }
+                            else
+                            {
+                                Console.WriteLine("Error");
+                            }
                         }
                     }
                 }
@@ -83,18 +90,19 @@ namespace PruebaBCN
         }
 
 
-        private void btnAgregarTcSistema_Click(object sender, EventArgs e)
+        /*private void btnAgregarTcSistema_Click(object sender, EventArgs e)
         {
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
+            int day = DateTime.Now.Day;
 
-            if (tipoCambio.ExistenRegistros(year, month))
+            if (tipoCambio.ExistenRegistros(year, month,day))
             {
                 MessageBox.Show("Los registros para este mes ya existen en la base de datos.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
-            int day = DateTime.Now.Day; // Obtén el día actual
+            
+          
             double exchangeRate;
 
             try
@@ -124,16 +132,18 @@ namespace PruebaBCN
             {
                 MessageBox.Show("Error al agregar el tipo de cambio del día a la base de datos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        }}*/
 
+        //este evento asigna el boton el cual nos dara el resultado en label del tipo de cambio del dia actual
         private async void btnCambioDia_Click(object sender, EventArgs e)
         {
-             int year = DateTime.Now.Year;
-            int month = DateTime.Now.Month;
+             int year = DateTime.Now.Year;//año actual
+            int month = DateTime.Now.Month; //mes actual
             int day = DateTime.Now.Day; // Obtén el día actual
 
             try
             {
+                //realiza la solicitud para la consulta del tipo de cambio para el dia correspondiente
                 double exchangeRate = await bcn.GetExchangeRateForDayAsync(year, month, day);
 
                 // Asigna el tipo de cambio del día al Label

@@ -23,9 +23,10 @@ namespace VerificacionTipoCambio
                 DateTime nextMonth = DateTime.Now.AddMonths(1);
                 int year = nextMonth.Year;
                 int month = nextMonth.Month;
+                int day = nextMonth.Day;
 
                 // Verifica si ya existen registros para el próximo mes en la base de datos
-                if (tipoCambio.ExistenRegistros(year, month))
+                if (tipoCambio.ExistenRegistros(year, month,day))
                 {
                     Console.WriteLine("Los registros para este mes ya existen en la base de datos.");
                     return;
@@ -40,7 +41,7 @@ namespace VerificacionTipoCambio
                 double exchangeRate;
 
                 // Intenta obtener el tipo de cambio para cada día del próximo mes
-                for (int day = 1; day <= lastDayOfMonth; day++)
+                for ( day = 1; day <= lastDayOfMonth; day++)
                 {
                     try
                     {
