@@ -10,6 +10,9 @@ namespace PruebaBCN
 {
     public class BancoCentralService
     {
+
+        /*Este método obtiene el tipo de cambio promedio mensual para un año y mes específicos utilizando
+         * una solicitud SOAP al servicio web. Devuelve un documento XML que contiene los datos del tipo de cambio.*/
         public async Task<XDocument> GetExchangeRatesForMonthAsync(int year, int month)
         {
             string serviceUrl = "https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx";
@@ -37,7 +40,8 @@ namespace PruebaBCN
                 return xDoc;
             }
         }
-      
+        /*Este método obtiene el tipo de cambio promedio para un día específico en un año y mes determinados utilizando una solicitud SOAP al servicio web.
+         * Devuelve el valor del tipo de cambio para el día especificado.*/
         public async Task<double> GetExchangeRateForDayAsync(int year, int month, int day)
         {
             string serviceUrl = "https://servicios.bcn.gob.ni/Tc_Servicio/ServicioTC.asmx";

@@ -18,11 +18,10 @@ namespace PruebaBCN
         {
             InitializeComponent();
         }
+        //instancias de clases
         private TipoCambio tipoCambio = new TipoCambio();
         private BancoCentralService bcn= new BancoCentralService();
          
-    
-
         private async void btnCambioMensual_Click_1(object sender, EventArgs e)
         {
             int year = DateTime.Now.Year;

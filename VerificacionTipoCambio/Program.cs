@@ -85,14 +85,11 @@ namespace VerificacionTipoCambio
             Console.ReadKey();
         }
 
-        // Resto del código (funciones ExchangeRatesExist, EnviarCorreo, etc.)
-    
-
         static void EnviarCorreoNotificacion(string exchangeRatesXml)
         {
             string toEmail = "Roquejohanssen@gmail.com";
             string subject = "Notificación de Existencia de Datos";
-            string body = "Se han encontrado registros para el próximo mes.\n\n" + exchangeRatesXml;
+            string body = "Se han encontrado registros para el próximo mes, se ha realizado el registro en la base de datos\n\n" + exchangeRatesXml;
 
             if (EnviarCorreo(toEmail, subject, body))
             {
@@ -111,13 +108,13 @@ namespace VerificacionTipoCambio
             {
                 MailMessage mail = new MailMessage();
                 mail.To.Add(correo);
-                mail.From = new MailAddress("Roquejohanssen@gmail.com"); // Cambia esto a tu dirección de correo
+                mail.From = new MailAddress("Roquejohanssen@gmail.com"); 
                 mail.Subject = asunto;
                 mail.Body = mensaje;
                 mail.IsBodyHtml = true;
                 var smtp = new SmtpClient()
                 {
-                    Credentials = new NetworkCredential("Roquejohanssen@gmail.com", "oyaitgdgwtfsciwr"), // Cambia esto a tus credenciales
+                    Credentials = new NetworkCredential("Roquejohanssen@gmail.com", "oyaitgdgwtfsciwr"), 
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true

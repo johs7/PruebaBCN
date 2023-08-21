@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -51,20 +50,21 @@
             this.btnCambioDia.BorderColor = System.Drawing.Color.Black;
             this.btnCambioDia.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCambioDia.FocusedColor = System.Drawing.Color.Empty;
-            this.btnCambioDia.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCambioDia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambioDia.ForeColor = System.Drawing.Color.White;
-            this.btnCambioDia.Image = ((System.Drawing.Image)(resources.GetObject("btnCambioDia.Image")));
+            this.btnCambioDia.Image = null;
             this.btnCambioDia.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnCambioDia.Location = new System.Drawing.Point(238, 24);
+            this.btnCambioDia.Location = new System.Drawing.Point(279, 24);
             this.btnCambioDia.Name = "btnCambioDia";
             this.btnCambioDia.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.btnCambioDia.OnHoverBorderColor = System.Drawing.Color.Black;
             this.btnCambioDia.OnHoverForeColor = System.Drawing.Color.White;
             this.btnCambioDia.OnHoverImage = null;
             this.btnCambioDia.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCambioDia.Size = new System.Drawing.Size(211, 42);
+            this.btnCambioDia.Size = new System.Drawing.Size(268, 42);
             this.btnCambioDia.TabIndex = 0;
             this.btnCambioDia.Text = "Obtener tipo de cambio del día";
+            this.btnCambioDia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnCambioDia.Click += new System.EventHandler(this.btnCambioDia_Click);
             // 
             // btnCambioMensual
@@ -75,9 +75,9 @@
             this.btnCambioMensual.BorderColor = System.Drawing.Color.Black;
             this.btnCambioMensual.DialogResult = System.Windows.Forms.DialogResult.None;
             this.btnCambioMensual.FocusedColor = System.Drawing.Color.Empty;
-            this.btnCambioMensual.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnCambioMensual.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCambioMensual.ForeColor = System.Drawing.Color.White;
-            this.btnCambioMensual.Image = ((System.Drawing.Image)(resources.GetObject("btnCambioMensual.Image")));
+            this.btnCambioMensual.Image = null;
             this.btnCambioMensual.ImageSize = new System.Drawing.Size(20, 20);
             this.btnCambioMensual.Location = new System.Drawing.Point(12, 24);
             this.btnCambioMensual.Name = "btnCambioMensual";
@@ -86,9 +86,10 @@
             this.btnCambioMensual.OnHoverForeColor = System.Drawing.Color.White;
             this.btnCambioMensual.OnHoverImage = null;
             this.btnCambioMensual.OnPressedColor = System.Drawing.Color.Black;
-            this.btnCambioMensual.Size = new System.Drawing.Size(220, 42);
+            this.btnCambioMensual.Size = new System.Drawing.Size(261, 42);
             this.btnCambioMensual.TabIndex = 1;
             this.btnCambioMensual.Text = "Obtener tipo de cambio mensual";
+            this.btnCambioMensual.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.btnCambioMensual.Click += new System.EventHandler(this.btnCambioMensual_Click_1);
             // 
             // dgvCambio
